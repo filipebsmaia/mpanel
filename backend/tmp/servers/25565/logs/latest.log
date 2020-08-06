@@ -1,0 +1,40 @@
+[14:12:36] [Server thread/INFO]: Starting minecraft server version 1.8.8
+[14:12:36] [Server thread/INFO]: Loading properties
+[14:12:36] [Server thread/INFO]: Default game type: SURVIVAL
+[14:12:36] [Server thread/INFO]: This server is running CraftBukkit version git-Spigot-fdc1440-53fac9f (MC: 1.8.8) (Implementing API version 1.8.8-R0.1-SNAPSHOT)
+[14:12:36] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[14:12:36] [Server thread/INFO]: Using 4 threads for Netty based IO
+[14:12:36] [Server thread/INFO]: Debug logging is disabled
+[14:12:36] [Server thread/INFO]: Generating keypair
+[14:12:37] [Server thread/INFO]: Starting Minecraft server on 127.0.0.1:25565
+[14:12:37] [Server thread/INFO]: Using epoll channel type
+[14:12:37] [Server thread/ERROR]: Could not load 'plugins/mpanel.jar' in folder 'plugins'
+org.bukkit.plugin.InvalidDescriptionException: Invalid plugin.yml
+	at org.bukkit.plugin.java.JavaPluginLoader.getPluginDescription(JavaPluginLoader.java:162) ~[spigot.jar:git-Spigot-fdc1440-53fac9f]
+	at org.bukkit.plugin.SimplePluginManager.loadPlugins(SimplePluginManager.java:133) [spigot.jar:git-Spigot-fdc1440-53fac9f]
+	at org.bukkit.craftbukkit.v1_8_R3.CraftServer.loadPlugins(CraftServer.java:292) [spigot.jar:git-Spigot-fdc1440-53fac9f]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.init(DedicatedServer.java:198) [spigot.jar:git-Spigot-fdc1440-53fac9f]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:524) [spigot.jar:git-Spigot-fdc1440-53fac9f]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_252]
+Caused by: java.util.zip.ZipException: zip file is empty
+	at java.util.zip.ZipFile.open(Native Method) ~[?:1.8.0_252]
+	at java.util.zip.ZipFile.<init>(ZipFile.java:225) ~[?:1.8.0_252]
+	at java.util.zip.ZipFile.<init>(ZipFile.java:155) ~[?:1.8.0_252]
+	at java.util.jar.JarFile.<init>(JarFile.java:166) ~[?:1.8.0_252]
+	at java.util.jar.JarFile.<init>(JarFile.java:130) ~[?:1.8.0_252]
+	at org.bukkit.plugin.java.JavaPluginLoader.getPluginDescription(JavaPluginLoader.java:150) ~[spigot.jar:git-Spigot-fdc1440-53fac9f]
+	... 5 more
+[14:12:37] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[14:12:37] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[14:12:37] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[14:12:37] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[14:12:37] [Server thread/INFO]: **** Beginning UUID conversion, this may take A LONG time ****
+[14:12:37] [Server thread/INFO]: Preparing level "world"
+[14:12:37] [Server thread/INFO]: Preparing start region for level 0 (Seed: -3418379866143610880)
+[14:12:38] [Server thread/INFO]: Preparing spawn area: 1%
+[14:12:39] [Server thread/INFO]: Preparing spawn area: 42%
+[14:12:40] [Server thread/INFO]: Preparing start region for level 1 (Seed: -3418379866143610880)
+[14:12:41] [Server thread/INFO]: Preparing spawn area: 80%
+[14:12:41] [Server thread/INFO]: Preparing start region for level 2 (Seed: -3418379866143610880)
+[14:12:41] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[14:12:41] [Server thread/INFO]: Done (4.428s)! For help, type "help" or "?"
