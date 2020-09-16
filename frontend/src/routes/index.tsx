@@ -4,14 +4,16 @@ import { Switch } from 'react-router-dom';
 import Route from './Route';
 
 import SignIn from '../pages/SignIn';
-import Panel from '../pages/Panel';
+import Home from '../pages/Home';
+import Server from '../pages/Applications';
 
 const Routes: React.FC = () => {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
-      <Route path="/panel" exact component={Panel} />
-      <Route path="/panel/:category/:page" exact component={Panel} />
+      <Route path="/dashboard" exact component={Home} />
+      <Route path="/dashboard/home" exact component={Home} />
+      <Route path="/applications/:serverId+" exact component={Server} />
     </Switch>
   );
 };

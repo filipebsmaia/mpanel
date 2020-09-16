@@ -2,12 +2,17 @@ import React, { useEffect, useState, useMemo } from 'react';
 import socketio from 'socket.io-client';
 
 import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
-import { useTheme } from '../../hooks/theme';
+import { useTheme } from '../../../hooks/theme';
 
-import { Content } from './styles';
-import Panel from '../../components/Panel';
-import Card from '../../components/Card';
-import CardList from '../../components/Card/CardList';
+import {
+  Content,
+  CardList,
+  Card,
+  CardItem,
+  CardGraph,
+  CardSide,
+} from './styles';
+import Panel from '../../../components/Panel';
 
 interface GlobalStatus {
   memory: number;
@@ -69,34 +74,40 @@ const Home: React.FC = () => {
     <Panel getPath={() => 'home'}>
       <Content>
         <CardList>
-          <Card
-            type="side"
-            color={theme.colors.darkGreen}
-            itens={[
-              { title: 'Online Players', value: status.onlinePlayers },
-              { title: 'Max Players', value: status.maxPlayers },
-              { title: 'Today Max', value: status.todayMaxPlayers },
-            ]}
-          />
-          <Card
-            type="side"
-            color={theme.colors.darkRed}
-            itens={[
-              { title: 'Used Memory', value: status.memory },
-              { title: 'Max Memory', value: status.totalMemory },
-              { title: 'Free Memory', value: status.freeMemory },
-            ]}
-          />
-          <Card
-            type="graph"
-            color={theme.colors.darkCyan}
-            itens={[
-              { title: 'Used CPU', value: status.currentCpu },
-              { title: 'Max Memory', value: status.cpu },
-            ]}
-          />
+          <Card color={theme.colors.darkGreen}>
+            <CardItem>
+              <span>Online Players</span>
+              <strong>{status.onlinePlayers}</strong>
+            </CardItem>
+            <CardSide>
+              <CardItem>
+                <span>Max Players</span>
+                <strong>{status?.maxPlayers}</strong>
+              </CardItem>
+              <CardItem>
+                <span>Today Max</span>
+                <strong>{status?.todayMaxPlayers}</strong>
+              </CardItem>
+            </CardSide>
+          </Card>
 
-          {/*
+          <Card color={theme.colors.darkRed}>
+            <CardItem>
+              <span>Used Memory</span>
+              <strong>{`${status?.memory}  MB`}</strong>
+            </CardItem>
+            <CardSide>
+              <CardItem>
+                <span>Max Memory</span>
+                <strong>{`${status?.totalMemory} MB`}</strong>
+              </CardItem>
+              <CardItem>
+                <span>Free Memory</span>
+                <strong>{`${status?.freeMemory} MB`}</strong>
+              </CardItem>
+            </CardSide>
+          </Card>
+
           <Card color={theme.colors.darkCyan}>
             <CardItem>
               <span>Used CPU</span>
@@ -108,7 +119,7 @@ const Home: React.FC = () => {
                 <SparklinesSpots />
               </Sparklines>
             </CardGraph>
-          </Card> */}
+          </Card>
         </CardList>
       </Content>
     </Panel>

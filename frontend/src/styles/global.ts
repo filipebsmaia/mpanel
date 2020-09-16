@@ -6,33 +6,39 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     outline: 0;
+  }
 
-    html, body, #root {
-      min-height: 100vh;
-      height: 100%;
-    }
+  html, body, #root {
+    height: 100%;
+    width: 100%;
+  }
 
-    div#root {
-      display: flex;
-    }
+  body {
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.text};
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  a {
+    text-decoration: none;
+    color: ${props => props.theme.colors.text};
+  }
 
-    body {
-      background: ${props => props.theme.colors.background};
-      color: ${props => props.theme.colors.text};
-      -webkit-font-smoothing: antialiased;
-    }
+  body, input, button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+  }
 
-    body, input, button {
-      font-family: 'Roboto', sans-serif;
-      font-size: 16px;
-    }
+  h1, h2, h3, h4, h5, h6, strong {
+    font-weight: 500;
+  }
 
-    h1, h2, h3, h4, h5, h6, strong {
-      font-weight: 500;
-    }
+  ul {
+    list-style: none;
+  }
 
-    button {
-      cursor: pointer;
-    }
-}
+  button {
+    cursor: pointer;
+  }
+
 `;

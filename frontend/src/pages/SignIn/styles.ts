@@ -6,6 +6,7 @@ export const Container = styled.div`
   align-items: center;
   height: 100%;
   min-height: 100vh;
+  margin: auto;
 `;
 
 export const LoginContainer = styled.div`

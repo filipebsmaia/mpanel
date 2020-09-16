@@ -4,7 +4,7 @@ interface MenuItemProps {
   active?: boolean; // number
 }
 export const Container = styled.div`
-  height: 100%;
+  /* height: 100%; */
 `;
 
 export const Title = styled.h1`
@@ -50,6 +50,11 @@ export const Item = styled.li<MenuItemProps>`
   display: flex;
   align-items: center;
   padding: 4px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background: ${props => props.theme.colors.backgroundselection};
+  }
 
   ${props =>
     props.active &&
@@ -57,9 +62,14 @@ export const Item = styled.li<MenuItemProps>`
       background: ${props.theme.colors.backgroundselection};
     `};
 
-  span {
-    font-size: 16px;
-    font-weight: 400;
-    padding-left: 24px;
+  a {
+    flex: 1;
+    text-decoration: none;
+
+    span {
+      font-size: 16px;
+      font-weight: 400;
+      padding-left: 24px;
+    }
   }
 `;
