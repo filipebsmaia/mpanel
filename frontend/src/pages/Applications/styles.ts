@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Content = styled.div`
   display: flex;
@@ -62,16 +63,40 @@ export const ConsoleButtonContainer = styled.div`
 export const Console = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  /* flex: 1; */
+  height: 100%;
 `;
 
 export const ConsoleMessageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 auto;
+
+  overflow-y: auto;
+  height: 100px;
+
   background: ${props => props.theme.colors.background3};
   border-radius: 10px 10px 0 0;
   padding: 8px;
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${props => shade(0.1, props.theme.colors.backgroundselection)};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${props => props.theme.colors.spotlight};
+    border-radius: 5px;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: ${props => shade(0.1, props.theme.colors.spotlight)};
+    }
+  }
 
   @media (max-width: 700px) {
     min-height: 600px;

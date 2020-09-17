@@ -1,7 +1,8 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { MdHome, MdApps } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { Container, Content, Title, Item } from './styles';
+import api from '../../services/api';
 
 interface MenuProps {
   pagePath: string;
@@ -12,7 +13,14 @@ interface ActiveItemInterface {
   pag: string;
 }
 
+interface ServerInterface {
+  id: string;
+  name: string;
+}
+
 const Menu: React.FC<MenuProps> = ({ pagePath }) => {
+  const [servers, setServers] = useState<ServerInterface[]>([]);
+
   const parsedPagePath = useMemo(() => {
     if (pagePath.startsWith('/')) {
       return pagePath.substring(1);
@@ -27,6 +35,13 @@ const Menu: React.FC<MenuProps> = ({ pagePath }) => {
 
     return parsedPagePath.startsWith(parsedItemPath);
   };
+
+  useEffect(() => {
+    api.get<ServerInterface[]>('/servers').then(response => {
+      setServers(response.data);
+    });
+  }, []);
+
   return (
     <Container>
       <Content>
@@ -53,11 +68,15 @@ const Menu: React.FC<MenuProps> = ({ pagePath }) => {
             </Title>
           </div>
           <ul>
-            <Item active={isRoute('applications/')}>
-              <Link to="/applications/id">
-                <span>127.0.0.1:25565</span>
-              </Link>
-            </Item>
+            {servers.map(server => {
+              return (
+                <Item key={server.id} active={isRoute('applications/')}>
+                  <Link to={`/applications/${server.id}`}>
+                    <span>{server.name}</span>
+                  </Link>
+                </Item>
+              );
+            })}
           </ul>
         </section>
       </Content>
