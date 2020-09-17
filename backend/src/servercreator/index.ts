@@ -99,6 +99,8 @@ const sendServersData = async (io: SocketIO.Server): Promise<void> => {
           io.emit(`${server.id}:status`, JSON.stringify(server));
 
           servers[name] = server;
+
+          console.log(server);
         }
       }),
     );
@@ -107,12 +109,12 @@ const sendServersData = async (io: SocketIO.Server): Promise<void> => {
       todayMaxPlayers: getMax(todayMaxPlayers, global.onlinePlayers),
     });
 
-    console.log(globalStatus);
+    // console.log(globalStatus);
 
     io.emit(`status`, JSON.stringify(globalStatus));
 
     sendServersData(io); // re run after timeout
-  }, 1000);
+  }, 5000);
 };
 
 export default async function startup(io: SocketIO.Server): Promise<void> {

@@ -27,6 +27,7 @@ export default class CreateServer1595941150569 implements MigrationInterface {
           {
             name: 'directory',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'autostart',
@@ -50,9 +51,9 @@ export default class CreateServer1595941150569 implements MigrationInterface {
             default: 2048,
           },
           {
-            name: 'jarfile',
+            name: 'file',
             type: 'varchar',
-            default: "'spigot.jar'",
+            default: "'minecraft_server.jar'",
           },
           // ===============================
           {

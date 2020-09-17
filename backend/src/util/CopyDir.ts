@@ -9,9 +9,9 @@ const copyDir = async (srcDir: string, distDir: string): Promise<void> => {
     const stat = await fs.promises.stat(src);
 
     if (stat && stat.isDirectory()) {
-      if (!(await fs.promises.stat(dist)).isDirectory) {
+      await fs.promises.stat(dist).catch(async () => {
         await fs.promises.mkdir(dist);
-      }
+      });
       await copyDir(src, dist);
     } else {
       await fs.promises.copyFile(src, dist);

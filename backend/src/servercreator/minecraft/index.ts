@@ -47,10 +47,10 @@ export const startServer = async (
       // eslint-disable-next-line no-console
       console.log(
         'Killed'.red,
-        server.name.red.bold,
+        server.name.yellow.bold,
         'with code'.red,
         `${code}`.yellow,
-        'as signal',
+        'as signal'.red,
         `${signal}`.yellow,
       );
     }
@@ -106,8 +106,7 @@ export const startup = async (io: SocketIO.Server): Promise<void> => {
           // eslint-disable-next-line no-console
           console.log('Killed last server pid ', server.lastpid);
         } catch (err) {
-          // eslint-disable-next-line no-console
-          console.log(err);
+          // console.log(err);
         }
       }
     }

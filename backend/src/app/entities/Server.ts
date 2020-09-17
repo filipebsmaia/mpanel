@@ -33,7 +33,7 @@ class Server {
   memory: number;
 
   @Column()
-  jarfile: string;
+  file: string;
 
   @Column()
   lastpid: number;

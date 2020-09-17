@@ -27,8 +27,8 @@ export default async function MinecraftServer({
 }: ICreateServerProps): Promise<ICreateServer> {
   const options = defaultServerOptions; // parse server and template options using object.assing
 
-  const { data: properties, directory } = await generateServer({
-    server: server.name,
+  const { data: properties } = await generateServer({
+    directory: server.directory,
     options,
     properties: {
       onlineMode: false,
@@ -39,15 +39,15 @@ export default async function MinecraftServer({
 
   const child = spawn(
     'java',
-    ['-jar', `-Xmx${server.memory}M`, '-Xms1M', `${server.jarfile}`],
+    ['-jar', '-Xms1M', `-Xmx${server.memory}M`, `${server.file}`],
     {
-      cwd: directory,
+      cwd: server.directory,
     },
   );
 
   process.on('exit', () => {
     console.log('killed server', ' ', ' ');
-    child.kill();
+    // child.kill();
   });
 
   child.stdout.setEncoding('utf8');

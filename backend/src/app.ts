@@ -16,7 +16,7 @@ import 'express-async-errors';
 import AppError from '@app/errors/AppError';
 import createConnection from '@config/database';
 
-import routes from './router';
+import routes from './routes';
 import initializeServers from './servercreator';
 
 export class App {

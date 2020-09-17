@@ -11,7 +11,7 @@ import unlinkFilesInDirByType from './UnlinkFilesInDirByType';
 import { toPropertiesFile, getDefaultProperties } from './ServerProperties';
 
 interface IGenerateServerPropertiesProps {
-  server: string;
+  directory: string;
   options?: IServerOptions;
   properties?: IPropertiesListInterface;
   type: 'lobby';
@@ -19,11 +19,10 @@ interface IGenerateServerPropertiesProps {
 
 interface IGenerateServerPropertiesInterface {
   data: IPropertiesListInterface;
-  directory: string;
 }
 
 export default async function generateServer({
-  server,
+  directory,
   options,
   properties,
   type,
@@ -45,10 +44,7 @@ export default async function generateServer({
 
   const dataAsProperties = toPropertiesFile(data);
 
-  const directory = path.resolve(
-    serverConfig.serverInstanceFolder,
-    String(server),
-  );
+  // const directory = path.resolve(serverConfig.serverInstanceFolder, String(id));
 
   const baseServerDirectory = path.resolve(serverConfig.serverBaseFolder, type);
 
@@ -73,5 +69,5 @@ export default async function generateServer({
     dataAsProperties,
   ); // Write/Rewrite server properties
 
-  return { data, directory };
+  return { data };
 }
